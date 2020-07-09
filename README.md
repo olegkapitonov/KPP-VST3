@@ -77,10 +77,12 @@ In Ubuntu run:
 3. Boost development files.
 4. Faust 2.x compiler and libraries.
 5. [VST3 SDK](https://www.steinberg.net/vst3sdk)
+6. gtkmm-3.0
+7. sqlite development files
 
 In Ubuntu run:
 
-`apt install libxcb1-dev libxcb-util-dev libxcb-icccm4-dev libcairo2-dev libpixman-1-dev libfontconfig1-dev libfreetype6-dev libpng-dev libxcb-shm0-dev libxcb-render0-dev libxrender-dev libx11-dev libxext-dev zlib1g-dev libbsd-dev libexpat1-dev libfftw3-dev libboost-all-dev faust`
+`apt install libxcb1-dev libxcb-util-dev libxcb-icccm4-dev libcairo2-dev libpixman-1-dev libfontconfig1-dev libfreetype6-dev libpng-dev libxcb-shm0-dev libxcb-render0-dev libxrender-dev libx11-dev libxext-dev zlib1g-dev libbsd-dev libexpat1-dev libfftw3-dev libboost-all-dev libxcb-cursor-dev libxcb-keysyms1-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev libgtkmm-3.0-dev sqlite faust`
 
 **Attention!!!** Check version of `faust` in your distro! Ubuntu Bionic Beaver has old 0.9.x version!
 In this case build latest version of `faust` from source.
@@ -94,8 +96,8 @@ Build process based on VST3 SDK.
 3. cd VST_SDK/VST3_SDK
 4. mkdir build
 5. cd build
-6. cmake -DCMAKE_BUILD_TYPE=Release -DSMTG_MYPLUGINS_SRC_PATH=/*your*/*path*/*to*/KPP-VST3 ..
-7. cd ../../KPP-VST3/build
+6. cmake -DCMAKE_BUILD_TYPE=Release -DSMTG_MYPLUGINS_SRC_PATH=../../../KPP-VST3 ..
+7. cd ../../../KPP-VST3/build
 8. make
 9. Plugins will appear at VST_SDK/VST3_SDK/build/VST3/Release.
    Copy *.vst3 directories to ~/.vst3
