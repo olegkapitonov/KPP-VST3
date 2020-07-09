@@ -58,20 +58,18 @@ namespace Vst {
   //-----------------------------------------------------------------------------
   PlugProcessor::PlugProcessor ()
   {
-    // register its editor class
     setControllerClass (MyControllerUID);
+    dsp = nullptr;
+    ui = nullptr;
   }
 
   //-----------------------------------------------------------------------------
   tresult PLUGIN_API PlugProcessor::initialize (FUnknown* context)
   {
-    //---always initialize the parent-------
     tresult result = AudioEffect::initialize (context);
     if (result != kResultTrue)
       return kResultFalse;
 
-    //---create Audio In/Out buses------
-    // we want a stereo Input and a Stereo Output
     addAudioInput (STR16 ("AudioInput"), Vst::SpeakerArr::kStereo);
     addAudioOutput (STR16 ("AudioOutput"), Vst::SpeakerArr::kStereo);
 
@@ -84,13 +82,11 @@ namespace Vst {
     return kResultTrue;
   }
 
-  //-----------------------------------------------------------------------------
   tresult PLUGIN_API PlugProcessor::setBusArrangements (Vst::SpeakerArrangement* inputs,
                                                         int32 numIns,
                                                         Vst::SpeakerArrangement* outputs,
                                                         int32 numOuts)
   {
-    // we only support one in and output bus and these buses must have the same number of channels
     if (numIns == 1 && numOuts == 1 && inputs[0] == outputs[0])
     {
       return AudioEffect::setBusArrangements (inputs, numIns, outputs, numOuts);
@@ -98,41 +94,39 @@ namespace Vst {
     return kResultFalse;
   }
 
-  //-----------------------------------------------------------------------------
   tresult PLUGIN_API PlugProcessor::setupProcessing (Vst::ProcessSetup& setup)
   {
-    // here you get, with setup, information about:
-    // sampleRate, processMode, maximum number of samples per audio block
     sampleRate = setup.sampleRate;
     return AudioEffect::setupProcessing (setup);
   }
 
-  //-----------------------------------------------------------------------------
   tresult PLUGIN_API PlugProcessor::setActive (TBool state)
   {
-    if (state) // Initialize
+    if (state)
     {
       dsp = new OctaverDsp();
       ui = new UI();
       dsp->init(sampleRate);
       dsp->buildUserInterface(ui);
-      // Allocate Memory Here
-      // Ex: algo.create ();
     }
-    else // Release
+    else
     {
-      //delete dsp;
-      //delete ui;
-      // Free Memory if still allocated
-      // Ex: if(algo.isCreated ()) { algo.destroy (); }
+      if (dsp != nullptr)
+      {
+        delete dsp;
+        dsp = nullptr;
+      }
+      if (ui != nullptr)
+      {
+        delete ui;
+        ui = nullptr;
+      }
     }
     return AudioEffect::setActive (state);
   }
 
-  //-----------------------------------------------------------------------------
   tresult PLUGIN_API PlugProcessor::process (ProcessData& data)
   {
-    //--- Read inputs parameter changes-----------
     if (data.inputParameterChanges)
     {
       int32 numParamsChanged = data.inputParameterChanges->getParameterCount ();
@@ -189,11 +183,8 @@ namespace Vst {
       }
     }
 
-    //--- Process Audio---------------------
-    //--- ----------------------------------
     if (data.numInputs == 0 || data.numOutputs == 0)
     {
-      // nothing to do
       return kResultOk;
     }
 
@@ -239,13 +230,10 @@ namespace Vst {
     return kResultOk;
   }
 
-  //------------------------------------------------------------------------
   tresult PLUGIN_API PlugProcessor::setState (IBStream* state)
   {
     if (!state)
       return kResultFalse;
-
-    // called when we load a preset or project, the model has to be reloaded
 
     IBStreamer streamer (state, kLittleEndian);
 
@@ -283,11 +271,8 @@ namespace Vst {
     return kResultOk;
   }
 
-  //------------------------------------------------------------------------
   tresult PLUGIN_API PlugProcessor::getState (IBStream* state)
   {
-    // here we need to save the model (preset or project)
-
     float toSaveCutoff = mCutoff;
     float toSaveDry = mDry;
     float toSaveOctave1 = mOctave1;
@@ -304,6 +289,5 @@ namespace Vst {
     return kResultOk;
   }
 
-  //------------------------------------------------------------------------
 } // Vst
 } // Steinberg

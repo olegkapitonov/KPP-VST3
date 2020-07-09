@@ -58,6 +58,8 @@ namespace Vst {
   PlugProcessor::PlugProcessor ()
   {
     setControllerClass (MyControllerUID);
+    dsp = nullptr;
+    ui = nullptr;
   }
 
   tresult PLUGIN_API PlugProcessor::initialize (FUnknown* context)
@@ -109,13 +111,20 @@ namespace Vst {
     }
     else
     {
-      //delete dsp;
-      //delete ui;
+      if (dsp != nullptr)
+      {
+        delete dsp;
+        dsp = nullptr;
+      }
+      if (ui != nullptr)
+      {
+        delete ui;
+        ui = nullptr;
+      }
     }
     return AudioEffect::setActive (state);
   }
 
-  //-----------------------------------------------------------------------------
   tresult PLUGIN_API PlugProcessor::process (ProcessData& data)
   {
     if (data.inputParameterChanges)
