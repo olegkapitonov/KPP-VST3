@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vstgui-ui-description version="1">
+  <fonts>
+  </fonts>
+  <colors>
+  </colors>
+  <template background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="background" class="CViewContainer" mouse-enabled="true" name="view" opacity="1" origin="0, 0" size="442, 600" transparent="false" wants-focus="false">
+    <view background-offset="0, 0" bitmap="onoff_button" class="COnOffButton" control-tag="Bypass" default-value="1" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="201, 415" size="130, 99" tooltip="This is a On/Off Button" transparent="false" wants-focus="true" wheel-inc-value="0.1"/>
+    <view angle-range="200" angle-start="175" background-offset="0, 0" handle-bitmap="knob" circle-drawing="true" class="CKnob" control-tag="Gain" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-line-cap-butt="false" corona-outline="false" corona-outline-width-add="2" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" inverse-bitmap="false" max-value="100" min-value="0" mouse-enabled="true" opacity="1" origin="65, 92" size="93, 93" skip-handle-drawing="false" transparent="false" value-inset="25" wants-focus="true" wheel-inc-value="0.1" zoom-factor="0.5"/>
+    <view angle-range="200" angle-start="175" background-offset="0, 0" handle-bitmap="knob" circle-drawing="true" class="CKnob" control-tag="Volume" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-line-cap-butt="false" corona-outline="false" corona-outline-width-add="2" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" inverse-bitmap="false" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="255, 73" size="93, 93" skip-handle-drawing="false" transparent="false" value-inset="25" wants-focus="true" wheel-inc-value="0.1" zoom-factor="0.5"/>
+    <view angle-range="200" angle-start="175" background-offset="0, 0" handle-bitmap="knob" circle-drawing="true" class="CKnob" control-tag="Bass" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-line-cap-butt="false" corona-outline="false" corona-outline-width-add="2" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" inverse-bitmap="false" max-value="15" min-value="-15" mouse-enabled="true" opacity="1" origin="24, 456" size="93, 93" skip-handle-drawing="false" transparent="false" value-inset="25" wants-focus="true" wheel-inc-value="0.1" zoom-factor="0.5"/>
+    <view angle-range="200" angle-start="175" background-offset="0, 0" handle-bitmap="knob" circle-drawing="true" class="CKnob" control-tag="Middle" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-line-cap-butt="false" corona-outline="false" corona-outline-width-add="2" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" inverse-bitmap="false" max-value="15" min-value="-15" mouse-enabled="true" opacity="1" origin="63, 309" size="93, 93" skip-handle-drawing="false" transparent="false" value-inset="25" wants-focus="true" wheel-inc-value="0.1" zoom-factor="0.5"/>
+    <view angle-range="200" angle-start="175" background-offset="0, 0" handle-bitmap="knob" circle-drawing="true" class="CKnob" control-tag="Treble" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-line-cap-butt="false" corona-outline="false" corona-outline-width-add="2" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" inverse-bitmap="false" max-value="15" min-value="-15" mouse-enabled="true" opacity="1" origin="180, 228" size="93, 93" skip-handle-drawing="false" transparent="false" value-inset="25" wants-focus="true" wheel-inc-value="0.1" zoom-factor="0.5"/>
+    <view angle-range="200" angle-start="175" background-offset="0, 0" handle-bitmap="knob" circle-drawing="true" class="CKnob" control-tag="Voice" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-line-cap-butt="false" corona-outline="false" corona-outline-width-add="2" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" inverse-bitmap="false" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="325, 225" size="93, 93" skip-handle-drawing="false" transparent="false" value-inset="25" wants-focus="true" wheel-inc-value="0.1" zoom-factor="0.5"/>
+  </template>
+  <bitmaps>
+    <bitmap name="background" path="base_scale.png"/>
+    <bitmap name="knob" path="light.png"/>
+    <bitmap name="onoff_button" path="onoff_button.png"/>
+  </bitmaps>
+  <control-tags>
+    <control-tag name="Bypass" tag="100"/>
+    <control-tag name="Bass" tag="102"/>
+    <control-tag name="Middle" tag="103"/>
+    <control-tag name="Treble" tag="104"/>
+    <control-tag name="Gain" tag="105"/>
+    <control-tag name="Volume" tag="106"/>
+    <control-tag name="Voice" tag="107"/>
+  </control-tags>
+</vstgui-ui-description>

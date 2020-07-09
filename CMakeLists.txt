@@ -1,0 +1,8 @@
+
+add_subdirectory(kpp_fuzz)
+add_subdirectory(kpp_bluedream)
+add_subdirectory(kpp_distruction)
+add_subdirectory(kpp_deadgate)
+add_subdirectory(kpp_single2humbucker)
+add_subdirectory(kpp_octaver)
+add_subdirectory(kpp_tubeamp)

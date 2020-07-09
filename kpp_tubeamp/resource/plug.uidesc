@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vstgui-ui-description version="1">
+  <fonts>
+    <font name="labelfont" font-name="Arial" size="17" bold="false" italic="false"/>
+  </fonts>
+  <colors>
+  </colors>
+  <template background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="background" class="CViewContainer" mouse-enabled="true" name="view" opacity="1" origin="0, 0" size="1000, 376" transparent="false" wants-focus="false">
+    <view angle-range="200" angle-start="175" background-offset="0, 0" handle-bitmap="knob" circle-drawing="true" class="CKnob" control-tag="Drive" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-line-cap-butt="false" corona-outline="false" corona-outline-width-add="2" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" inverse-bitmap="false" max-value="100" min-value="0" mouse-enabled="true" opacity="1" origin="219, 236" size="62, 62" skip-handle-drawing="false" value-inset="20" wants-focus="true" wheel-inc-value="0.1" zoom-factor="0.5"/>
+    <view angle-range="200" angle-start="175" background-offset="0, 0" handle-bitmap="knob" circle-drawing="true" class="CKnob" control-tag="Bass" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-line-cap-butt="false" corona-outline="false" corona-outline-width-add="2" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" inverse-bitmap="false" max-value="10" min-value="-10" mouse-enabled="true" opacity="1" origin="382, 236" size="62, 62" skip-handle-drawing="false" transparent="false" value-inset="20" wants-focus="true" wheel-inc-value="0.1" zoom-factor="0.5"/>
+    <view angle-range="200" angle-start="175" background-offset="0, 0" handle-bitmap="knob" circle-drawing="true" class="CKnob" control-tag="Middle" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-line-cap-butt="false" corona-outline="false" corona-outline-width-add="2" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" inverse-bitmap="false" max-value="10" min-value="-10" mouse-enabled="true" opacity="1" origin="483, 236" size="62, 62" skip-handle-drawing="false" transparent="false" value-inset="20" wants-focus="true" wheel-inc-value="0.1" zoom-factor="0.5"/>
+    <view angle-range="200" angle-start="175" background-offset="0, 0" handle-bitmap="knob" circle-drawing="true" class="CKnob" control-tag="Treble" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-line-cap-butt="false" corona-outline="false" corona-outline-width-add="2" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" inverse-bitmap="false" max-value="10" min-value="-10" mouse-enabled="true" opacity="1" origin="589, 236" size="62, 62" skip-handle-drawing="false"  transparent="false" value-inset="20" wants-focus="true" wheel-inc-value="0.1" zoom-factor="0.5"/>
+    <view angle-range="200" angle-start="175" background-offset="0, 0" handle-bitmap="knob" circle-drawing="true" class="CKnob" control-tag="Volume" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-line-cap-butt="false" corona-outline="false" corona-outline-width-add="2" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" inverse-bitmap="false" max-value="100" min-value="0" mouse-enabled="true" opacity="1" origin="813, 236" size="62, 62" skip-handle-drawing="false" transparent="false" value-inset="20" wants-focus="true" wheel-inc-value="0.1" zoom-factor="0.5"/>
+
+    <view background-offset="0, 0" class="CSlider" control-tag="Level" default-value="0.5" draw-back="false" draw-back-color="~ WhiteCColor" draw-frame="false" draw-frame-color="~ WhiteCColor" draw-value="false" draw-value-color="~ WhiteCColor" draw-value-from-center="false" draw-value-inverted="false" handle-bitmap="slider_handle" handle-offset="0, 2" max-value="1" min-value="0" mode="free click" mouse-enabled="true" opacity="1" orientation="horizontal" origin="511, 352" reverse-orientation="false" size="184, 21" transparent="false" transparent-handle="true" wheel-inc-value="0.1" zoom-factor="10"/>
+    <view background-offset="0, 0" class="CSlider" control-tag="Cabinet" default-value="0.5" draw-back="false" draw-back-color="~ WhiteCColor" draw-frame="false" draw-frame-color="~ WhiteCColor" draw-value="false" draw-value-color="~ WhiteCColor" draw-value-from-center="false" draw-value-inverted="false" handle-bitmap="slider_handle" handle-offset="0, 2" max-value="1" min-value="0" mode="free click" mouse-enabled="true" opacity="1" orientation="horizontal" origin="812, 352" reverse-orientation="false" size="184, 21" transparent="false" transparent-handle="true" wheel-inc-value="0.1" zoom-factor="10"/>
+    <view background-color="~ BlackCColor" background-color-draw-style="filled and stroked" class="CViewContainer" mouse-enabled="true" opacity="1" origin="75, 354" size="364, 18" sub-controller="MessageController" transparent="true">
+      <view background-offset="0, 0" class="CTextButton" control-tag="Button" default-value="0.5" font="labelfont" frame-color="~ BlackCColor" frame-color-highlighted="~ BlackCColor" frame-width="0" gradient="Default TextButton Gradient" gradient-highlighted="Default TextButton Gradient Highlighted" icon-position="left" icon-text-margin="0" kick-style="false" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="0, 0" round-radius="0" size="364, 18" text-alignment="left" text-color="~ WhiteCColor" text-color-highlighted="~ WhiteCColor" title="Press to load profile!" transparent="false" wheel-inc-value="0.1"/>
+    </view>
+  </template>
+  <bitmaps>
+    <bitmap name="background" path="base_scale.png"/>
+    <bitmap name="knob" path="light.png"/>
+    <bitmap name="slider_handle" path="slider_handle.png"/>
+  </bitmaps>
+  <gradients>
+    <gradient name="Default TextButton Gradient">
+      <color-stop rgba="#00000000" start="0"/>
+      <color-stop rgba="#00000000" start="1"/>
+    </gradient>
+    <gradient name="Default TextButton Gradient Highlighted">
+      <color-stop rgba="#00000000" start="0"/>
+      <color-stop rgba="#00000000" start="1"/>
+    </gradient>
+  </gradients>
+  <control-tags>
+    <control-tag name="Bypass" tag="100"/>
+    <control-tag name="Drive" tag="101"/>
+    <control-tag name="Bass" tag="102"/>
+    <control-tag name="Middle" tag="103"/>
+    <control-tag name="Treble" tag="104"/>
+    <control-tag name="Volume" tag="105"/>
+    <control-tag name="Level" tag="106"/>
+    <control-tag name="Cabinet" tag="107"/>
+
+    <control-tag name="Button" tag="1000"/>
+  </control-tags>
+</vstgui-ui-description>
