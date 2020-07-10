@@ -104,11 +104,13 @@ Build process based on VST3 SDK.
 
 ### How to install binary versions
 
-1. For Debian Buster (10) download KPP-VST3-1.2-binary-debian10.tar.bz2.
-2. For Ubuntu LTS and other distributions download KPP-VST3-1.2-binary-ubuntu-bionic.tar.bz2.
+1. For Debian Buster (10) download KPP-VST3-1.2.1-binary-debian10.tar.bz2.
+2. For Ubuntu LTS and other distributions download KPP-VST3-1.2.1-binary-ubuntu-bionic.tar.bz2.
 3. Copy *.vst3 folders to ~/.vst3
 4. Launch host application (e. g. REAPER). Find desired plugin in library,
    names will have `kpp_` prefix.
+5. Copy *tubeamp Profiles* directory to ~/tubeAmp Profiles
+6. kpp_tubeamp plugin will produce no sound until *.tapf profile is loaded!
 
 ### Quick start guide
 
