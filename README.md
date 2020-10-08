@@ -92,7 +92,7 @@ In this case build latest version of `faust` from source.
 Build process based on VST3 SDK.
 
 1. Unpack [VST3 SDK](https://www.steinberg.net/vst3sdk) to VST_SDK directory.
-2. Clone this repoitory to KPP-VST3 directory (git clone https://github.com/olegkapitonov/KPP-VST3).
+2. Clone this repository to KPP-VST3 directory (git clone https://github.com/olegkapitonov/KPP-VST3).
 3. cd VST_SDK/VST3_SDK
 4. mkdir build
 5. cd build
