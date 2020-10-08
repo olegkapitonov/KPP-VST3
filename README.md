@@ -109,7 +109,7 @@ Build process based on VST3 SDK.
 3. Copy *.vst3 folders to ~/.vst3
 4. Launch host application (e. g. REAPER). Find desired plugin in library,
    names will have `kpp_` prefix.
-5. Copy *tubeamp Profiles* directory to ~/tubeAmp Profiles
+5. Copy *tubeamp Profiles* directory to ~/tubeAmp Profiles or to any other place you prefer.
 6. kpp_tubeamp plugin will produce no sound until *.tapf profile is loaded!
 
 ### Quick start guide
