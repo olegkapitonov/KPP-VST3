@@ -68,7 +68,7 @@ and adjust the signal level.
 
 In Ubuntu run:
 
-`apt install libxcb1 libxcb-util1 libxcb-icccm4 libcairo2 libxau6 libxdmcp6 libpixman-1-0 libfontconfig1 libfreetype6 libpng16-16 libxcb-shm0 libxcb-render0 libxrender1 libx11-6 libxext6 zlib1g libbsd0 libexpat1 libfftw3-3`
+`apt install libxcb1 libxcb-util1 libxcb-icccm4 libcairo2 libxau6 libxdmcp6 libpixman-1-0 libfontconfig1 libfreetype6 libpng16-16 libxcb-shm0 libxcb-render0 libxrender1 libx11-6 libxext6 zlib1g libbsd0 libexpat1 libfftw3-3 libxcb-cursor0 libxcb-xkb1 libxkbcommon0 libxkbcommon-x11-0`
 
 ### Dependencies for building
 
