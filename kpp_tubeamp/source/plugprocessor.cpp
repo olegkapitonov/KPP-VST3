@@ -67,6 +67,7 @@ namespace Vst {
   PlugProcessor::PlugProcessor ()
   {
     setControllerClass (MyControllerUID);
+    dsp = new TubeampDsp();
   }
 
   tresult PLUGIN_API PlugProcessor::initialize (FUnknown* context)
@@ -106,6 +107,25 @@ namespace Vst {
   {
     sampleRate = setup.sampleRate;
     setBufsize(bufsize);
+
+    dsp->init(sampleRate);
+
+    dsp->ports.drive = mDrive * 100.0;
+    dsp->ports.low = (mBass * 2.0 - 1.0) * 10.0;
+    dsp->ports.middle = (mMiddle * 2.0 - 1.0) * 10.0;
+    dsp->ports.high = (mTreble * 2.0 - 1.0) * 10.0;
+    dsp->ports.mastergain = mVolume * 100.0;
+    dsp->ports.volume = mLevel;
+    dsp->ports.cabinet = mCabinet;
+
+    if (profilePath != "")
+    {
+      if (check_profile_file(profilePath.c_str()))
+      {
+        profile = load_profile(profilePath.c_str());
+        dsp->profile = &profile->header;
+      }
+    }
     return AudioEffect::setupProcessing (setup);
   }
 
@@ -113,17 +133,6 @@ namespace Vst {
   {
     if (state)
     {
-      dsp = new TubeampDsp();
-      dsp->init(sampleRate);
-
-      dsp->ports.drive = mDrive * 100.0;
-      dsp->ports.low = (mBass * 2.0 - 1.0) * 10.0;
-      dsp->ports.middle = (mMiddle * 2.0 - 1.0) * 10.0;
-      dsp->ports.high = (mTreble * 2.0 - 1.0) * 10.0;
-      dsp->ports.mastergain = mVolume * 100.0;
-      dsp->ports.volume = mLevel;
-      dsp->ports.cabinet = mCabinet;
-
       if (profilePath != "")
       {
         if (check_profile_file(profilePath.c_str()))
@@ -139,12 +148,6 @@ namespace Vst {
       {
         delete profile;
         profile = nullptr;
-      }
-
-      if (dsp)
-      {
-        delete dsp;
-        dsp = nullptr;
       }
     }
     return AudioEffect::setActive (state);

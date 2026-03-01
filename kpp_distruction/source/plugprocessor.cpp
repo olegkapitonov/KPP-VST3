@@ -58,8 +58,8 @@ namespace Vst {
   PlugProcessor::PlugProcessor ()
   {
     setControllerClass (MyControllerUID);
-    dsp = nullptr;
-    ui = nullptr;
+    dsp = new DistructionDsp();
+    ui = new UI();
   }
 
   tresult PLUGIN_API PlugProcessor::initialize (FUnknown* context)
@@ -97,31 +97,13 @@ namespace Vst {
   tresult PLUGIN_API PlugProcessor::setupProcessing (Vst::ProcessSetup& setup)
   {
     sampleRate = setup.sampleRate;
+    dsp->init(sampleRate);
+    dsp->buildUserInterface(ui);
     return AudioEffect::setupProcessing (setup);
   }
 
   tresult PLUGIN_API PlugProcessor::setActive (TBool state)
   {
-    if (state)
-    {
-      dsp = new DistructionDsp();
-      ui = new UI();
-      dsp->init(sampleRate);
-      dsp->buildUserInterface(ui);
-    }
-    else
-    {
-      if (dsp != nullptr)
-      {
-        delete dsp;
-        dsp = nullptr;
-      }
-      if (ui != nullptr)
-      {
-        delete ui;
-        ui = nullptr;
-      }
-    }
     return AudioEffect::setActive (state);
   }
 
@@ -289,10 +271,10 @@ namespace Vst {
     mVoice = savedVoice;
     mBypass = savedBypass > 0;
 
-    ui->setBassValue(mBass);
-    ui->setMiddleValue(mMiddle);
-    ui->setTrebleValue(mTreble);
-    ui->setGainValue(mGain);
+    ui->setBassValue((mBass * 2.0 - 1.0) * 15.0);
+    ui->setMiddleValue((mMiddle * 2.0 - 1.0) * 15.0);
+    ui->setTrebleValue((mTreble * 2.0 - 1.0) * 15.0);
+    ui->setGainValue(mGain * 100.0);
     ui->setVolumeValue(mVolume);
     ui->setVoiceValue(mVoice);
 

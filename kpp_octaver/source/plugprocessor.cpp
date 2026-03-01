@@ -59,8 +59,8 @@ namespace Vst {
   PlugProcessor::PlugProcessor ()
   {
     setControllerClass (MyControllerUID);
-    dsp = nullptr;
-    ui = nullptr;
+    dsp = new OctaverDsp();
+    ui = new UI();
   }
 
   //-----------------------------------------------------------------------------
@@ -97,31 +97,13 @@ namespace Vst {
   tresult PLUGIN_API PlugProcessor::setupProcessing (Vst::ProcessSetup& setup)
   {
     sampleRate = setup.sampleRate;
+    dsp->init(sampleRate);
+    dsp->buildUserInterface(ui);
     return AudioEffect::setupProcessing (setup);
   }
 
   tresult PLUGIN_API PlugProcessor::setActive (TBool state)
   {
-    if (state)
-    {
-      dsp = new OctaverDsp();
-      ui = new UI();
-      dsp->init(sampleRate);
-      dsp->buildUserInterface(ui);
-    }
-    else
-    {
-      if (dsp != nullptr)
-      {
-        delete dsp;
-        dsp = nullptr;
-      }
-      if (ui != nullptr)
-      {
-        delete ui;
-        ui = nullptr;
-      }
-    }
     return AudioEffect::setActive (state);
   }
 
@@ -263,10 +245,10 @@ namespace Vst {
     mOctave2 = savedOctave2;
     mBypass = savedBypass > 0;
 
-    ui->setCutoffValue(mCutoff);
-    ui->setDryValue(mDry);
-    ui->setOctave1Value(mOctave1);
-    ui->setOctave1Value(mOctave2);
+    ui->setCutoffValue((mCutoff + 1.0) * 100.0);
+    ui->setDryValue(mDry * 30.0);
+    ui->setOctave1Value(mOctave1 * 30.0);
+    ui->setOctave1Value(mOctave2 * 30.0);
 
     return kResultOk;
   }
