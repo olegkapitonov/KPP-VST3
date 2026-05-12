@@ -78,6 +78,7 @@ Steinberg::Vst::PlugController::createInstance)// function pointer called when t
 
 END_FACTORY
 
+#if !__has_include("public.sdk/source/main/moduleinit.h")
 //------------------------------------------------------------------------
 //  Module init/exit
 //------------------------------------------------------------------------
@@ -95,3 +96,4 @@ bool DeinitModule ()
 {
   return true;
 }
+#endif
