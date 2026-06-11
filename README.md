@@ -43,10 +43,6 @@ Source code can be compiled for Linux 64-bit or 32-bit.
    single coil pickup on the guitar. Useful for playing
    heavy-metal on Stratocaster guitar with single coil pickups.
 
-
-This plugins (except tubeAmp) available in LV2 and LADSPA versions. It is
-strongly recommended to use LV2 versions.
-
 tubeAmp is the main and most complex plugin in the set.
 It can be used to emulate the sound of any common models
 of guitar combo amplifiers.
@@ -90,18 +86,36 @@ In this case build latest version of `faust` from source.
 
 ### How to build and install
 
-Build process based on VST3 SDK.
+Build process based on VST3.8 SDK (recommended).
 
-1. Unpack [VST3 SDK](https://www.steinberg.net/vst3sdk) to VST_SDK directory.
+1. Unpack [VST3 SDK](https://www.steinberg.net/vst3sdk) into the VST_SDK directory.
+2. Clone this repository to KPP-VST3 directory (git clone https://github.com/olegkapitonov/KPP-VST3).
+3. cd VST_SDK/vst3sdk
+4. mkdir build
+5. cd build
+6. VST3.8 SDK needs to be patched to support the legacy SMTG_MYPLUGINS_SRC_PATH variable. Run the following command to patch CMakeLists.txt of VST SDK:
+```
+cat >> "../CMakeLists.txt" <<'EOF'
+# Honor legacy SMTG_MYPLUGINS_SRC_PATH for out-of-tree plugin trees
+if(SMTG_MYPLUGINS_SRC_PATH)
+    add_subdirectory(${SMTG_MYPLUGINS_SRC_PATH} myplugins)
+endif()
+EOF
+```
+7. cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release -DSMTG_MYPLUGINS_SRC_PATH="../../../KPP-VST3" -DSMTG_ENABLE_VST3_PLUGIN_EXAMPLES=OFF -DSMTG_ENABLE_VST3_HOSTING_EXAMPLES=OFF -DSMTG_ENABLE_VSTGUI_SUPPORT=ON -DCMAKE_CXX_FLAGS="-include cstdint -include limits -include cstdio"  ..
+8. make
+9. Plugins will be created in VST_SDK/VST3_SDK/build/VST3/Release and symlinks will be created in ~/.vst3.
+
+Build process based on VST3.6 SDK (legacy).
+
+1. Unpack [VST3 SDK 3.6](https://github.com/steinbergmedia/vst3sdk/releases/tag/vstsdk3612_03_12_2018_build_67) into the VST_SDK directory.
 2. Clone this repository to KPP-VST3 directory (git clone https://github.com/olegkapitonov/KPP-VST3).
 3. cd VST_SDK/VST3_SDK
 4. mkdir build
 5. cd build
-6. cmake -DCMAKE_BUILD_TYPE=Release -DSMTG_MYPLUGINS_SRC_PATH=../../../KPP-VST3 ..
-7. cd ../../../KPP-VST3/build
-8. make
-9. Plugins will appear at VST_SDK/VST3_SDK/build/VST3/Release.
-   Copy *.vst3 directories to ~/.vst3
+6. cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release -DSMTG_MYPLUGINS_SRC_PATH="../../../KPP-VST3" -DSMTG_ADD_VST3_PLUGINS_SAMPLES=FALSE -DSMTG_ADD_VST3_HOSTING_SAMPLES=FALSE -DSMTG_ENABLE_VSTGUI_SUPPORT=ON -DCMAKE_CXX_FLAGS="-include cstdint -include limits -include cstdio -include exception" ..
+7. make
+8. Plugins will be created in VST_SDK/VST3_SDK/build/VST3/Release and symlinks will be created in ~/.vst3.
 
 ### How to install binary versions
 
