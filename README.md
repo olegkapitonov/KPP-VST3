@@ -5,6 +5,7 @@ Latest release is 1.2.1.
 
 THIS IS VST3 LINUX VERSIONS!
 ===========================
+(As well as Mac and Win, experimental)
 
 LV2 versions (for Ardour, Carla, Qtractor) [here](https://github.com/olegkapitonov/Kapitonov-Plugins-Pack)
 
@@ -14,7 +15,7 @@ LV2 versions (for Ardour, Carla, Qtractor) [here](https://github.com/olegkapiton
 Binary files are available for Linux 64-bit systems.
 Source code can be compiled for Linux 64-bit or 32-bit.
 
-**EXPERIMENTAL** Win64 VST3 versions now available [here](https://kpp-tubeamp.com/downloads)!
+**EXPERIMENTAL** Mac and Win64 VST3 versions now available [here](https://kpp-tubeamp.com/downloads)!
 
 ![Screenshot](screen.jpg)
 

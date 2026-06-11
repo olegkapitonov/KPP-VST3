@@ -30,7 +30,11 @@ if(SMTG_ADD_VSTGUI)
     smtg_add_vst3plugin(${target} ${plug_sources})
     set_target_properties(${target} PROPERTIES ${SDK_IDE_MYPLUGINS_FOLDER})
     target_include_directories(${target} PUBLIC ${VSTGUI_ROOT}/vstgui4)
-    target_link_libraries(${target} PRIVATE base sdk vstgui_support fftw3 fftw3f)
+    find_package(PkgConfig REQUIRED)
+    pkg_check_modules(fftw3  REQUIRED IMPORTED_TARGET fftw3)
+    pkg_check_modules(fftw3f REQUIRED IMPORTED_TARGET fftw3f)
+    target_link_libraries(${target} PRIVATE base sdk vstgui_support
+        PkgConfig::fftw3 PkgConfig::fftw3f)
 
     smtg_add_vst3_resource(${target} "resource/plug.uidesc")
     smtg_add_vst3_resource(${target} "resource/base_scale.png")
